@@ -7,7 +7,6 @@ public:
 	void breaknum(int N) {
 		for (int i = 0; i < 4; i++) { num[i] = N % 10; N /= 10; }
 		make();
-		res = max - min;
 	}
 	void make() {
 		for (int i = 3; i > 0; i--)
@@ -17,13 +16,14 @@ public:
 		max = 0;
 		min = 0;
 		for (int i = 0; i < 4; i++) { max *= 10; max += num[i]; min *= 10; min += num[3 - i]; }
+		res = max - min;
 	}
 	void print() {
 		if (max == min) { printf("%04d - %04d = 0000", max, min); }
 		while (last != res) {
 			printf("%04d - %04d = %04d\n", max, min, res);
 			last = res; breaknum(res);
-			make(); res = max - min;
+			make(); 
 		}
 	}
 };
