@@ -19,6 +19,7 @@ public:
 		for (int i = 0; i < 4; i++) { max *= 10; max += num[i]; min *= 10; min += num[3 - i]; }
 	}
 	void print() {
+		if (max == min) { printf("%04d - %04d = 0000", max, min); }
 		while (last != res) {
 			printf("%04d - %04d = %04d\n", max, min, res);
 			last = res; breaknum(res);
