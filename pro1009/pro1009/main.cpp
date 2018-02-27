@@ -6,30 +6,23 @@ class thenum {
 public:
 	void breaknum(int N) {
 		for (int i = 0; i < 4; i++) { num[i] = N % 10; N /= 10; }
-		makemax(); makemin();
+		make();
 		res = max - min;
 	}
-	void makemax() {
+	void make() {
 		for (int i = 3; i > 0; i--)
 			for (int j = 0; j < i; j++) {
 				if (num[j] < num[j + 1]) { int k = num[j]; num[j] = num[j + 1]; num[j + 1] = k; }//could be changed as bubblesort or others
 			}
 		max = 0;
-		for (int i = 0; i < 4; i++) { max *= 10; max += num[i]; }
-	}
-	void makemin() {//could merge with makemax
-		for (int i = 3; i > 0; i--)
-			for (int j = 0; j < i; j++) {
-				if (num[j] > num[j + 1]) { int k = num[j]; num[j] = num[j + 1]; num[j + 1] = k; }
-			}
 		min = 0;
-		for (int i = 0; i < 4; i++) { min *= 10; min += num[i]; }
+		for (int i = 0; i < 4; i++) { max *= 10; max += num[i]; min *= 10; min += num[3 - i]; }
 	}
 	void print() {
 		while (last != res) {
 			printf("%04d - %04d = %04d\n", max, min, res);
 			last = res; breaknum(res);
-			makemax(); makemin(); res = max - min;
+			make(); res = max - min;
 		}
 	}
 };
