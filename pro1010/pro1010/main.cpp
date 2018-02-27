@@ -11,7 +11,7 @@ int main() {
 	}
 	for (int i = 0; i < N; i++) {
 		cin >> price[i];
-		per[i] = float(storage[i]) / price[i];
+		per[i] = float(price[i]) / storage[i];
 	}
 	int k = 0;
 	for (int i = N - 1; i > 0; i--) {//bubble sort
