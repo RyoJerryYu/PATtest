@@ -36,5 +36,5 @@ int main() {
 		printf("%05d %d %05d\n", thelist[addr[i]].address, thelist[addr[i]].data, thelist[addr[i]].next);
 	}
 	thelist[addr[count - 1]].next = -1;
-	printf("%05d %d -1", thelist[addr[count - 1]].address, thelist[count - 1].data);
+	printf("%05d %d -1", thelist[addr[count - 1]].address, thelist[addr[count - 1]].data);
 }
