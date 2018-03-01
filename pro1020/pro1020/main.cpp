@@ -23,7 +23,7 @@ int main() {
 	for (int i = 0; i < N; i++) {
 		long long max = (long long)num[i] * p;
 		//int maxi = search(num, max) + 1;//指向第一个大于max的位置
-		int maxi = upper_bound(num.begin()+i, num.end(), max)-num.begin();
+		int maxi = upper_bound(num.begin()+i, num.end(), max)-num.begin();//从i开始查找而不是从0开始
 		if (maxi - i > q)q = maxi - i;//使得maxi-i为完美序列中数的个数
 	}
 	cout << q;
