@@ -18,7 +18,7 @@ int main() {
 	vector<long> num(N);
 	for (int i = 0; i < N; i++) cin >> num[i];
 	sort(num.begin(), num.end());
-	int q = 0;
+	int q = 1;//p是正整数，至少有一个
 	for (int i = 0; i < N; i++) {
 		long max = num[i] * p;
 		int maxi = search(num, max) + 1;//指向第一个大于max的位置
