@@ -21,7 +21,7 @@ int main() {
 	}
 	else if (exp + 1 >= real.length()) {
 		res += real;
-		for (i = 0; i<real.length() - exp + 1; i++)res += '0';
+		for (i = 0; i < exp + 1 - real.length(); i++)res += '0';
 	}
 	else {
 		for (i = 0; i<exp + 1; i++)res += real[i];
@@ -29,4 +29,5 @@ int main() {
 		for (; i<real.length(); i++)res += real[i];
 	}
 	cout << res;
+	return 0;
 }
