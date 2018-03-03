@@ -2,7 +2,7 @@
 #include <string>
 #include <iterator>
 using namespace std;
-int main() {
+int main1() {
 	string sci, res = "", real = "";
 	unsigned exp = 0;
 	bool expsign;
