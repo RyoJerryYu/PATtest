@@ -1,18 +1,15 @@
 #include <iostream>
 #include <string>
-#include <iterator>
-#include <algorithm>
 using namespace std;
 int main() {
 	string sci, res="";
 	cin >> sci;
-	auto i = sci.begin();
-	i++; res += *i;
-	for (i += 2; *i != 'E'; i++);
-	res += sci.substr(3, i-sci.begin()-3);
+	int i = 1;
+	res += sci[i];
+	i = sci.find_first_of('E');
+	res += sci.substr(3, i - 3);
 	i++;
-	int exp = stoi(sci.substr(i-sci.begin()));
-	cout << exp;
+	int exp = stoi(sci.substr(i));
 	if (exp < 0) {
 		res.insert(0, "0.");
 		exp++;
@@ -25,5 +22,7 @@ int main() {
 		exp -= res.length() - 1;
 		res.append(exp, '0');
 	}
+	if (sci[0] == '-')cout << '-';
+	cout << res << endl;
 	return 0;
 }
