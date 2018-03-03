@@ -7,6 +7,7 @@ int main() {
 	stack<int> res;
 	cin >> A >> B >> D;
 	C = A + B;
+	if (C == 0) res.push(0);//处理为0情况
 	while (C != 0) {
 		res.push(C%D);
 		C /= D;
