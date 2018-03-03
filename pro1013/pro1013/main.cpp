@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <iterator>
 using namespace std;
-int main() {
+int main1() {
 	int a[10];
 	vector<int> d;
 	for (int i = 0; i < 10; i++) cin >> a[i];
@@ -20,4 +20,5 @@ int main() {
 	}
 	for (const int& n : d)cout << n;
 	cout << endl;
+	return 0;
 }
