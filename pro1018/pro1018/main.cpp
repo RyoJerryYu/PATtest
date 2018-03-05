@@ -23,7 +23,8 @@ struct people1018 {
 		if (birthd > newest || oldest > birthd)return false;
 		return true;
 	}
-	bool operator>(people1018&other) { return birthd > other.birthd; }
+	//bool operator>(people1018&other) { return birthd > other.birthd; }
+	bool operator<(people1018&other) { return !(birthd > other.birthd) && (birthd.d != other.birthd.d || birthd.m != other.birthd.m || birthd.y != other.birthd.y); }
 };
 int main() {
 	int N;
@@ -35,7 +36,7 @@ int main() {
 		cin >> a.name >> d;
 		if (a.structp(d)) peoples.push_back(a);
 	}
-	sort(peoples.begin(), peoples.end());//
+	sort(peoples.begin(), peoples.end());//不能只定义operator>，可以只定义operator<
 	N = peoples.size();
 	cout << N << " " << peoples[0].name << " " << peoples[N - 1].name << endl;
 	return 0;
