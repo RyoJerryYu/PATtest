@@ -7,8 +7,8 @@ struct day {
 	int y, m, d;
 	day() {};//要声明空对象都需定义默认构造函数
 	day(int a, int b, int c) :y(a), m(b), d(c) {};
-	bool operator>(day & other) {
-		return (y > other.y) || (y == other.y && m > other.m) || (y == other.y && m == other.m && d > other.d);
+	bool operator<(day & other) {
+		return (y < other.y) || (y == other.y && m < other.m) || (y == other.y && m == other.m && d < other.d);
 	}
 };
 struct people1018 {
@@ -20,11 +20,10 @@ struct people1018 {
 		birthd.m = stoi(births.substr(5, 2));
 		birthd.d = stoi(births.substr(8, 2));
 		day oldest(1814, 9, 6), newest(2014, 9, 6);
-		if (birthd > newest || oldest > birthd)return false;
+		if (birthd < oldest || newest < birthd)return false;
 		return true;
 	}
-	//bool operator>(people1018&other) { return birthd > other.birthd; }
-	bool operator<(people1018&other) { return !(birthd > other.birthd) && (birthd.d != other.birthd.d || birthd.m != other.birthd.m || birthd.y != other.birthd.y); }
+	bool operator<(people1018&other) { return birthd < other.birthd; }
 };
 int main() {
 	int N;
