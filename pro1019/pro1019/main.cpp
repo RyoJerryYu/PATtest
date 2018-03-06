@@ -2,7 +2,7 @@
 #include <string>
 #include <algorithm>
 using namespace std;
-int main() {
+int main1() {
 	string oris, ress, difs = "";
 	cin >> oris >> ress;
 	auto i = oris.begin(), j = ress.begin();
@@ -13,4 +13,5 @@ int main() {
 		else difs += (char)toupper(*(i++));
 	}
 	cout << difs << endl;
+	return 0;
 }
