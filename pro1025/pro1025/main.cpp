@@ -59,5 +59,6 @@ vector<int> onceMerSort(const vector<int>& midseq) {
 		merge(midp, midp + shortest, midp + shortest, midp + step, resbak);//不合并最后一step
 	}
 	if (midp + shortest < midseq.end()) merge(midp, midp + shortest, midp + shortest, midseq.end(), resbak);//合并最后一step
+	else copy(midp, midseq.end(), resbak);
 	return res;
 }
