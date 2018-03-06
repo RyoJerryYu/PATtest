@@ -9,10 +9,8 @@ int main() {
 	const auto orie = oris.end();
 	while (i != orie) {
 		if (*i == *j)i++, j++;
-		else if ('a' <= *i&&*i <= 'z' && (find(difs.begin(), difs.end(), *i - 'a' + 'A')) != difs.end())i++;
-		else if (find(difs.begin(), difs.end(), *i) != difs.end())i++;
-		else if ('a' <= *i&&*i <= 'z')difs += *(i++) - 'a' + 'A';
-		else difs += *(i++);
+		else if (find(difs.begin(), difs.end(), (char)toupper(*i)) != difs.end())i++;
+		else difs += (char)toupper(*(i++));
 	}
 	cout << difs << endl;
 }
