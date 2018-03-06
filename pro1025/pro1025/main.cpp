@@ -17,8 +17,8 @@ int main() {
 	cout << (typ ? "Insertion Sort" : "Merge Sort") << endl;
 	if (typ) finseq = onceInsSort(midseq);
 	else finseq = onceMerSort(midseq);
-	for (int& x : finseq) cout << x << " ";
-	cout << endl;
+	for (auto i = finseq.begin(); i + 1 < finseq.end(); i++)cout << *i << " ";
+	cout <<*(finseq.end()-1) << endl;
 	return 0;
 }
 bool isInsSort(const vector<int>& oriseq, const vector<int>& midseq) {
