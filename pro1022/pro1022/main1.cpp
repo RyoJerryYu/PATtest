@@ -8,7 +8,7 @@ struct stu1022 {
 		return Mark < other.Mark;
 	}
 };
-int main() {
+int main1() {
 	int N;
 	cin >> N;
 	vector<stu1022> a(N);
