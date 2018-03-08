@@ -1,22 +1,15 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <array>
 using namespace std;
-struct stu1022 {
-	int No = 0, Mark = 0;
-	bool operator<(stu1022 other) {
-		return Mark < other.Mark;
-	}
-};
-int main1() {
-	int N;
+int main() {
+	int N, school, mark, maxsch = 0;
+	array<int, 100010> schmark = { 0 };
 	cin >> N;
-	vector<stu1022> a(N);
-	for (stu1022& x : a) {
-		cin >> x.No >> x.Mark;
+	for (int i = 0; i < N; i++) {
+		cin >> school >> mark;
+		schmark[school] += mark;
+		if (schmark[school] > schmark[maxsch])maxsch = school;
 	}
-	sort(a.begin(), a.end());
-	reverse(a.begin(), a.end());
-	cout << a[0].No << " " << a[0].Mark << endl;
+	cout << maxsch << " " << schmark[maxsch] << endl;
 	return 0;
 }

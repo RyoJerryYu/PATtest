@@ -1,8 +1,7 @@
 #include <iostream>
 #include <map>
-#include <algorithm>
 using namespace std;
-int main() {
+int main3() {
 	int n;
 	map<int, int> scomap;
 	cin >> n;
