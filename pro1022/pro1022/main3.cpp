@@ -2,19 +2,19 @@
 #include <map>
 #include <algorithm>
 using namespace std;
-int main2() {
+int main() {
 	int n;
 	map<int, int> scomap;
 	cin >> n;
-	int school, mark;
+	int school, mark, max = 0, mxsc;
 	for (int i = 0; i < n; i++) {
 		cin >> school >> mark;
 		scomap[school] += mark;
+		if (scomap[school] > max) {
+			mxsc = school;
+			max = scomap[school];
+		}
 	}
-	auto p = scomap.begin();
-	for (auto i = scomap.begin(); i != scomap.end(); i++) {
-		if (i->second > p->second) p = i;
-	}
-	cout << p->first << " " << p->second << endl;
+	cout << mxsc << " " << max << endl;
 	return 0;
 }
