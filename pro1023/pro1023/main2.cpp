@@ -2,8 +2,8 @@
 #include <string>
 using namespace std;
 bool brokey[128] = { false };
-int main() {
-	string brostr, instr, outstr;
+int main2() {
+	string brostr, instr, outstr="";
 	cin >> brostr >> instr;
 	for (char x : brostr) {
 		if (x == '+') {
@@ -18,4 +18,5 @@ int main() {
 		if (!brokey[x])outstr += x;
 	}
 	cout << outstr << endl;
+	return 0;
 }

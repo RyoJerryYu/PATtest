@@ -4,7 +4,7 @@
 using namespace std;
 const string upchar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 int main1() {
-	string brostr, brokey="", instr, outstr;
+	string brostr, brokey="", instr, outstr="";
 	cin >> brostr >> instr;
 	for (const char& x : brostr) {
 		if (x == '+')brokey += upchar;
