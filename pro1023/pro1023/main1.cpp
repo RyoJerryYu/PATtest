@@ -1,10 +1,9 @@
 #include <iostream>
-#include <set>
 #include <string>
 #include <algorithm>
 using namespace std;
 const string upchar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-int main() {
+int main1() {
 	string brostr, brokey="", instr, outstr;
 	cin >> brostr >> instr;
 	for (const char& x : brostr) {
@@ -20,4 +19,5 @@ int main() {
 		if (!binary_search(brokey.begin(), brokey.end(), x))outstr += x;
 	}
 	cout << outstr << endl;
+	return 0;
 }
