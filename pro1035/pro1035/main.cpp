@@ -45,7 +45,7 @@ vector<int> onceMerSort(const vector<int>& midseq) {
 	vector<int> res;
 	auto midp = midseq.begin(), sqend = midseq.end() - 1;
 	back_insert_iterator<vector<int> > resbak(res);
-	int step = 1, shortest = midseq.size();//shortest即为已合并的长度
+	int step = 1, shortest = (int)midseq.size();//shortest即为已合并的长度
 	for (midp = midseq.begin(); midp < sqend; midp++) {//`midp<sqend` means `midp+1<end`
 		if (*midp <= *(midp + 1)) step++;
 		else {

@@ -6,7 +6,7 @@ int main() {
 	cin >> sci;
 	int i = 1;
 	res += sci[i];
-	i = sci.find_first_of('E');
+	i = (int)sci.find_first_of('E');
 	res += sci.substr(3, i - 3);
 	i++;
 	int exp = stoi(sci.substr(i));
@@ -19,7 +19,7 @@ int main() {
 		res.insert(exp + 1, ".");
 	}
 	else {
-		exp -= res.length() - 1;
+		exp -= (int)res.length() - 1;
 		res.append(exp, '0');
 	}
 	if (sci[0] == '-')cout << '-';

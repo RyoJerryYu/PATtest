@@ -13,7 +13,7 @@ int main() {
 	for (auto i = num.begin(); i != num.end(); i++) {
 		long long max = (long long)*i * p;
 		auto maxi = upper_bound(i, num.end(), max);//从i开始查找而不是从0开始
-		if (maxi - i > q)q = maxi - i;//maxi-i为完美序列中元素的个数
+		if (maxi - i > q)q = int(maxi - i);//maxi-i为完美序列中元素的个数
 	}
 	cout << q;
 }

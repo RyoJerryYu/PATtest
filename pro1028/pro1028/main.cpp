@@ -36,7 +36,7 @@ int main() {
 		if (a.structp(d)) peoples.push_back(a);
 	}
 	sort(peoples.begin(), peoples.end());//不能只定义operator>，可以只定义operator<
-	N = peoples.size();
+	N = (int)peoples.size();
 	cout << N << " " << peoples[0].name << " " << peoples[N - 1].name << endl;
 	return 0;
 }
