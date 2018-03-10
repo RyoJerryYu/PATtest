@@ -1,22 +1,17 @@
 #include <iostream>
-#include <string>
 using namespace std;
-bool brokey[128] = { false };
-int main2() {
-	string brostr, instr, outstr="";
-	cin >> brostr >> instr;
-	for (char x : brostr) {
-		if (x == '+') {
-			for (int i = 'A'; i <= 'Z'; i++)brokey[i] = true;
-		}
-		else {
-			brokey[x] = true;
-			brokey[tolower(x)] = true;
+int main() {
+	int a[10] = { 0 }, b = 0;
+	for (int i = 0; i < 10; i++)cin >> a[i];
+	for (int i = 1; i < 10; i++) {
+		if (a[i] != 0) {
+			a[i]--;
+			cout << i;
+			break;
 		}
 	}
-	for (char x : instr) {
-		if (!brokey[x])outstr += x;
+	for (int i = 0; i < 10; i++) {
+		for (; a[i] != 0; a[i]--)cout << i;
 	}
-	cout << outstr << endl;
-	return 0;
+	cout << endl;
 }

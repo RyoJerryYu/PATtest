@@ -1,19 +1,37 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <stdio.h>
 using namespace std;
 int main() {
-	int N;
-	long p;
-	cin >> N >> p;
-	vector<long> num(N);
-	for (long& x:num) cin >> x;
-	sort(num.begin(), num.end());
-	int q = 1;//p是正整数，至少有一个
-	for (auto i = num.begin(); i != num.end(); i++) {
-		long long max = (long long)*i * p;
-		auto maxi = upper_bound(i, num.end(), max);//从i开始查找而不是从0开始
-		if (maxi - i > q)q = maxi - i;//maxi-i为完美序列中元素的个数
+	int N = 0, need = 0, *storage = 0, *price = 0, soldnum = 0;
+	float *per = 0, soldprice = 0;
+	cin >> N >> need;
+	storage = new int[N], price = new int[N], per = new float[N];
+	for (int i = 0; i < N; i++) {
+		cin >> storage[i];
 	}
-	cout << q;
+	for (int i = 0; i < N; i++) {
+		cin >> price[i];
+		per[i] = float(price[i]) / storage[i];
+	}
+	int k = 0;
+	for (int i = N - 1; i > 0; i--) {//bubble sort
+		for (int j = 0; j < i; j++) {
+			if (per[j] < per[j + 1]) {
+				int m = storage[j]; storage[j] = storage[j + 1]; storage[j + 1] = m;
+				m = price[j]; price[j] = price[j + 1]; price[j + 1] = m;
+				float l = per[j]; per[j] = per[j + 1]; per[j + 1] = l;
+				k = j + 2;
+			}
+		}
+		i = k; k = 0;
+	}
+	k = 0;
+	while (soldnum < need) {
+		soldnum += storage[k]; soldprice += price[k];
+		k++;
+	}
+	int n = soldnum - need; k--;
+	soldprice -= per[k] * n;
+	printf("%.2f", soldprice);
+	delete[] storage, price, per;
 }

@@ -1,41 +1,27 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
-struct money {
-	long knut=0;
-	friend istream& operator>>(istream&, money&);
-	friend ostream& operator<<(ostream&, money);
-	money operator-(money& other) {
-		money res;
-		res.knut = knut - other.knut;
-		return res;
-	}
-};
+void printsand(int, char);
 int main() {
-	money p, a;
-	cin >> p >> a;
-	cout << (a-p) << endl;
-}
-istream& operator>>(istream& ins, money& it) {
-	long galleon;
-	int sickle, knut;
-	char a, b;
-	ins >> galleon >> a >> sickle >> b >> knut;
-	it.knut = (galleon * 17 + sickle) * 29 + knut;
-	return ins;
-}
-ostream& operator<<(ostream& outs, money it) {
-	long sickle, galleon, knut;
-	knut = it.knut;
-	bool plus = true;
-	if (knut < 0) {
-		plus = false;
-		knut = -knut;
+	int n, sum = 1, flr = 0;
+	char a;
+	cin >> n >> a;
+	if (n == 0) { cout << n << endl; return 0; }
+	while (sum <= n) {
+		flr++;
+		sum += 4 * flr + 2;
 	}
-	sickle = knut / 29;
-	knut = knut % 29;
-	galleon = sickle / 17;
-	sickle = sickle % 17;
-	if (plus == false)galleon = -galleon;
-	outs << galleon << '.' << sickle << '.' << knut;
-	return outs;
+	sum -= 4 * flr + 2;
+	printsand(flr, a);
+	cout << n - sum << endl;
+}
+void printsand(int flr, char a) {
+	for (int i = 0; i < flr; i++) {
+		if (i != 0)cout << setfill(' ') << setw(i) << " ";//setw参数不能为0（为0时至少输出一个空格
+		cout << setfill(a) << setw(flr + flr - i - i - 1) << a << endl;//setfill参数不能为长度1的字符串只能为char
+	}
+	for (int i = 1; i < flr; i++) {
+		if (i != flr - 1)cout << setfill(' ') << setw(flr - i - 1) << " ";
+		cout << setfill(a) << setw(i + i + 1) << a << endl;
+	}
 }

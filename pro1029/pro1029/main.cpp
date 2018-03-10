@@ -2,28 +2,16 @@
 #include <string>
 #include <algorithm>
 using namespace std;
-int main() {
-	string input, want;
-	cin >> input >> want;
-	sort(input.begin(), input.end());
-	sort(want.begin(), want.end());
-	auto inp = input.begin();
-	auto wanp = want.begin();
-	string minus = "";
-	while(inp!=input.end()) {
-		if (*inp == *wanp)inp++, wanp++;
-		else if (*inp < *wanp)inp++;
-		else {
-			minus += *wanp;
-			wanp++;
-		}
-		if (wanp == want.end())break;
+int main1() {
+	string oris, ress, difs = "";
+	cin >> oris >> ress;
+	auto i = oris.begin(), j = ress.begin();
+	const auto orie = oris.end();
+	while (i != orie) {
+		if (*i == *j)i++, j++;
+		else if (find(difs.begin(), difs.end(), (char)toupper(*i)) != difs.end())i++;
+		else difs += (char)toupper(*(i++));
 	}
-	while (wanp != want.end()) {
-		
-		minus += *wanp;
-		wanp++;
-	}
-	if (minus.size() != 0)cout << "No " << minus.size() << endl;
-	else cout << "Yes " << input.size() - want.size() << endl;
+	cout << difs << endl;
+	return 0;
 }

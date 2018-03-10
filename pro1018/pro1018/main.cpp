@@ -1,42 +1,35 @@
 #include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
 using namespace std;
-struct day {
-	int y, m, d;
-	day() {};//要声明空对象都需定义默认构造函数
-	day(int a, int b, int c) :y(a), m(b), d(c) {};
-	bool operator<(day & other) {
-		return (y < other.y) || (y == other.y && m < other.m) || (y == other.y && m == other.m && d < other.d);
+const char give[3] = { 'B','C','J' }; const int compair[3][3] = { { 0,1,-1 },{ -1,0,1 },{ 1,-1,0 } };
+class player {
+	int nwin = 0, npeace = 0, nlose = 0, win[3] = { 0 };
+public:
+	int use;
+	void compairwith(player & other) {
+		if (compair[use][other.use] == 0) { npeace++; other.npeace++; return; }
+		if (compair[use][other.use] == 1) { nwin++; other.nlose++; win[use]++; return; }
+		if (compair[use][other.use] == -1) { nlose++; other.nwin++; other.win[other.use]++; return; }
 	}
-};
-struct people1018 {
-	string name;
-	day birthd;
-	people1018() {};
-	bool structp(string& births) {
-		birthd.y = stoi(births.substr(0, 4));
-		birthd.m = stoi(births.substr(5, 2));
-		birthd.d = stoi(births.substr(8, 2));
-		day oldest(1814, 9, 6), newest(2014, 9, 6);
-		if (birthd < oldest || newest < birthd)return false;
-		return true;
+	void output()const { cout << nwin << " " << npeace << " " << nlose << endl; }
+	char winmax()const {
+		int n = 0, max = 0;
+		for (int i = 0; i<3; i++) { if (win[i]>max) { n = i; max = win[i]; } }
+		return give[n];
 	}
-	bool operator<(people1018&other) { return birthd < other.birthd; }
 };
 int main() {
-	int N;
+	player A, B; int N = 0; char Ause, Buse;
 	cin >> N;
-	vector<people1018> peoples;
-	for (int i = 0; i < N; i++) {
-		people1018 a;
-		string d;
-		cin >> a.name >> d;
-		if (a.structp(d)) peoples.push_back(a);
+	for (int i = 0; i<N; i++) {
+		cin >> Ause >> Buse;
+		for (int j = 0; j<3; j++) {
+			if (Ause == give[j]) { A.use = j; }
+			if (Buse == give[j]) { B.use = j; }
+		}
+		A.compairwith(B);
 	}
-	sort(peoples.begin(), peoples.end());//不能只定义operator>，可以只定义operator<
-	N = peoples.size();
-	cout << N << " " << peoples[0].name << " " << peoples[N - 1].name << endl;
+	A.output();
+	B.output();
+	cout << A.winmax() << " " << B.winmax() << endl;
 	return 0;
 }

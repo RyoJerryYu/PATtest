@@ -1,16 +1,18 @@
 #include <iostream>
-#include <iomanip>
+#include <string>
 using namespace std;
 int main() {
-	long c1, c2, deltat;
-	int s, m, h;
-	cin >> c1 >> c2;
-	deltat = (c2 - c1 + 50) / 100;
-	s = int(deltat % 60);
-	deltat /= 60;
-	m = int(deltat % 60);
-	deltat /= 60;
-	h = int(deltat);
-	cout << setfill('0') << setw(2) << h << ":" << setw(2) << m << ":" << setw(2) << s << endl;
+	string a, b;
+	int da, db;
+	long pa = 0, pb = 0;
+	cin >> a >> da >> b >> db;
+	for (unsigned i = 0; i<a.size(); i++) {
+		if (a[i] - '0' == da) { pa = pa * 10 + da; }
+	}
+	for (unsigned i = 0; i<b.size(); i++) {
+		if (b[i] - '0' == db) { pb = pb * 10 + db; }
+	}
+	cout << pa + pb << endl;
+
 	return 0;
 }

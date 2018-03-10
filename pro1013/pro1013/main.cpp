@@ -1,24 +1,24 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <iterator>
 using namespace std;
-int main1() {
-	int a[10];
-	vector<int> d;
-	for (int i = 0; i < 10; i++) cin >> a[i];
-	for (int i = 0; i < 10; i++) {
-		while (a[i] != 0) {
-			d.push_back(i);
-			a[i]--;
+int main() {//i:第i个素数,j:正整数,k:小于j的第k个素数,l:这行输出的个数
+	int m = 1, n = 1, i = 0, j = 2, k = 0, l = 0, res = 0;
+	cin >> m >> n; m -= 1;
+	int *p = new int[n];
+	while (i<n) {
+		while (!res&&k<i) {
+			if (j%p[k] == 0) { res++; }
+			k++;
 		}
+		if (res == 0) {
+			p[i] = j;
+			if (i >= m) {
+				cout << j;
+				if ((i - m) % 10 == 9 || i == n - 1) { cout << endl; }
+				else { cout << " "; }
+			}
+			i++;
+		}
+		j++; res = 0; k = 0;
 	}
-	if (d[0] == 0) {
-		auto b = upper_bound(d.begin(), d.end(), 0);
-		d[0] = *b;
-		*b = 0;
-	}
-	for (const int& n : d)cout << n;
-	cout << endl;
 	return 0;
 }
