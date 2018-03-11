@@ -2,8 +2,8 @@
 #include <string>
 #include <algorithm>
 using namespace std;
-char PATest[6] = { 'P','A','T','e','s','t' };
 int main() {
+	const char PATest[6] = { 'P','A','T','e','s','t' };
 	string input;
 	int count[128] = { 0 };
 	cin >> input;

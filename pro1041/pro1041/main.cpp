@@ -1,6 +1,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <vector>
 using namespace std;
 struct stud {
 	string id;
@@ -20,12 +21,12 @@ int main() {
 		group[trisite] = tstud;
 	}
 	cin >> m;
-	int* que = new int[m];
-	for (int i = 0; i < m; i++) {
-		cin >> que[i];
+	vector<int> que(m);
+	for (int& x:que) {
+		cin >> x;
 	}
-	for (int i = 0; i < m; i++) {
-		cout << group[que[i]].id << ' ' << group[que[i]].site << endl;
+	for (int x:que) {
+		cout << group[x].id << ' ' << group[x].site << endl;
 	}
 	return 0;
 }
