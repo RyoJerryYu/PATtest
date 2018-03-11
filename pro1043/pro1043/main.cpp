@@ -14,17 +14,13 @@ int main() {
 			if (count[PATest[i]] > 0) {
 				cout << PATest[i];
 				count[PATest[i]]--;
-				if (count[PATest[i]] == 0)res--;
+			}
+			if (count[PATest[i]] == 0) {//考虑初值为0，不能放到上一个if中
+				res--;
+				count[PATest[i]]--;//用-1储存状态，只会进一次if
 			}
 		}
 	}
 	cout << endl;
 	return 0;
 }
-/*
-if (count['P'] > 0) {
-cout << 'P';
-count['P']--;
-if (count['F'] == 0)res--;
-}
-*/
