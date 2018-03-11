@@ -23,8 +23,11 @@ int main() {
 		if (llower[i] <= num[i] && num[i] <= rbiger[i])res.push_back(num[i]);
 	}
 	cout << res.size() << endl;
-	for (unsigned i = 0; i < res.size() - 1; i++) {
-		cout << res[i] << ' ';
+	if (res.size() > 0) {
+		for (unsigned i = 0; i < res.size() - 1; i++) {
+			cout << res[i] << ' ';
+		}
+		cout << res[res.size() - 1] << endl;
 	}
-	cout << res[res.size() - 1] << endl;
+	else cout << endl;
 }
