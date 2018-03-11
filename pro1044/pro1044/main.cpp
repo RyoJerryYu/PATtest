@@ -42,9 +42,14 @@ string tomarsnum(int it) {
 	string res = "";
 	if (0 < marsupper&&marsupper < 13) {
 		res += marsup[marsupper];
-		res += " ";
+		if (marslower != 0)res += " ";
+	}//为13整倍数时不输出个位0，但为0时输出0.
+	if (marslower != 0) {
+		res += marslow[marslower];
 	}
-	res += marslow[marslower];
+	if (marsupper == 0 && marslower == 0) {
+		res += marslow[marslower];
+	}
 	return res;
 }
 string marstoi(string it) {
