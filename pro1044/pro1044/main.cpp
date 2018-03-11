@@ -6,7 +6,7 @@
 using namespace std;
 string tomarsnum(int);
 string marstoi(string);
-string marslow[13] = { "","jan","feb","mar","apr","may","jun","jly","aug","sep","oct","nov","dec" };
+string marslow[13] = { "tret","jan","feb","mar","apr","may","jun","jly","aug","sep","oct","nov","dec" };
 string marsup[13] = { "","tam", "hel", "maa", "huh", "tou", "kes", "hei", "elo", "syy", "lok", "mer", "jou" };
 int main() {
 	string input;
@@ -40,14 +40,9 @@ string tomarsnum(int it) {
 	int marslower = it % 13;
 	int marsupper = it / 13;
 	string res = "";
-	if (0 < marsupper&&marsupper < 13) {
-		res += marsup[marsupper];
-		if (marslower != 0)res += " ";
-	}//为13整倍数时不输出个位0，但为0时输出0.
-	res += marslow[marslower];
-	if (marsupper == 0 && marslower == 0) {
-		res += "tret";
-	}
+	res += marsup[marsupper];
+	if (marsupper != 0 && marslower != 0)res += " ";
+	if (marsupper == 0 || marslower != 0)res += marslow[marslower];//为13整倍数时不输出个位0，但为0时输出0.
 	return res;
 }
 string marstoi(string it) {
