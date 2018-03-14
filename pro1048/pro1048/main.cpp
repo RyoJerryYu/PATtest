@@ -31,6 +31,24 @@ int main() {
 		p1++;
 		p2++;
 	}
+	while (p1 != p1end) {
+		int c1 = *p1 - '0';
+		int c2 = 0;
+		if (count % 2 == 1) {
+			sub = (c1 + c2) % 13;
+			if (sub == 10)res.push_back('J');
+			else if (sub == 11)res.push_back('Q');
+			else if (sub == 12)res.push_back('K');
+			else res.push_back((char)(sub + '0'));
+		}
+		else {
+			sub = (c2 - c1);
+			if (sub < 0)sub += 10;
+			res.push_back((char)(sub + '0'));
+		}
+		count++;
+		p1++;
+	}
 	while (p2 != p2end) res.push_back(*(p2++));
 	reverse(res.begin(), res.end());
 	cout << res << endl;
