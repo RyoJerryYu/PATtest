@@ -23,7 +23,11 @@ int main() {
 	for (int i = 0; i < N; i++)cin >> group[i];
 	sort(group.rbegin(), group.rend());
 
-	n = (int)floor(sqrt((double)N));
+	if (N == 0) {
+		return 0;
+	}
+
+	n = (int)sqrt((double)N);
 	m = N / n;
 	while (m*n != N) {
 		n--;
@@ -40,10 +44,19 @@ int main() {
 		up = 0 + a;
 		right = n - 1 - a;
 		down = m - 1 - a;
-		for (int i = left; i < right && p != pend; i++) nummap[up][i] = *(p++);
-		for (int i = up; i < down && p != pend; i++) nummap[i][right] = *(p++);
-		for (int i = right; i > left && p != pend; i--) nummap[down][i] = *(p++);
-		for (int i = down; i > up && p != pend; i--) nummap[i][left] = *(p++);
+		if (left == right) {//n<=m, so right-left <= down-up
+			for (int i = up; i <= down; i++) {
+				nummap[i][left] = *(p++);
+			}
+			continue;
+		}
+		else {//if left==up and right==down, it will be wrong.
+			for (int i = left; i < right && p != pend; i++) nummap[up][i] = *(p++);
+			for (int i = up; i < down && p != pend; i++) nummap[i][right] = *(p++);
+			for (int i = right; i > left && p != pend; i--) nummap[down][i] = *(p++);
+			for (int i = down; i > up && p != pend; i--) nummap[i][left] = *(p++);
+		}
+		
 	}
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < n - 1; j++) {
