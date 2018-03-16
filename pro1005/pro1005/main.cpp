@@ -1,10 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <map>
 #include <algorithm>
 using namespace std;
 int main() {
 	int k;
-	vector<int> found(1000, 0);
+	map<int,int> found;
 	cin >> k;
 	vector<int> n(k);
 	for (int& x : n) {
